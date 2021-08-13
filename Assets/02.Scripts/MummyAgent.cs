@@ -55,8 +55,12 @@ public class MummyAgent : Agent
     {
         var action = actions.ContinuousActions;
         Debug.Log($"[0]={action[0]}, [1]={action[1]}");
-        // Debug.Log("[0]="+ action[0] + ", [1]=" + action[1]);
-        // Debug.LogFormat("[0], [1]", action[0], action[1]);
+
+        Vector3 dir = (Vector3.forward * action[0]) + (Vector3.right * action[1]);
+        rb.AddForce(dir.normalized * 50.0f);
+
+        // 지속적인 움직임을 유도하기 위한 마이너스 페널티
+        SetReward(-0.001f);
     }
 
     // 테스트를 위한 입력값을 전달하는 메소드
