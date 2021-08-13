@@ -297,6 +297,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daa663a53c39f4edc92eb60f8eaf59d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  goodItem: {fileID: 1367801398041379952, guid: 5b6fd2c9a150941dc821dc318b94fbc2,
+    type: 3}
+  badItem: {fileID: 7196873920525994890, guid: 68c92acd7d4dc4510a5af0203e276fbe, type: 3}
+  goodItemCount: 30
+  badItemCount: 20
+  goodList: []
+  badList: []
 --- !u!1 &480074282
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,8 +853,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2072507749}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.48168296, y: -0.2317591, z: 0.1337761, w: 0.83448976}
+  m_LocalPosition: {x: 14.705364, y: 51.905144, z: -25.754095}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
