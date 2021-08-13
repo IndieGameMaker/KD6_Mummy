@@ -44,6 +44,10 @@ public class MummyAgent : Agent
     // 주변환경을 관측하는 메소드
     public override void CollectObservations(VectorSensor sensor)
     {
+        sensor.AddObservation(targetTr.localPosition);  // (x, y, z)  3
+        sensor.AddObservation(tr.localPosition);        // (x, y, z)  3
+        sensor.AddObservation(rb.velocity.x);           // 1
+        sensor.AddObservation(rb.velocity.z);           // 1
     }
 
     // 정책(Policy)에 따라서 행동을 처리 메소드
