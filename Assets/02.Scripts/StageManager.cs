@@ -22,6 +22,13 @@ public class StageManager : MonoBehaviour
         {
             Destroy(obj);
         }
+        foreach (var obj in badList)
+        {
+            Destroy(obj);
+        }
+
+        goodList.Clear();
+        badList.Clear();
 
         // GoodItem 생성
         for (int i = 0; i < goodItemCount; i++)
