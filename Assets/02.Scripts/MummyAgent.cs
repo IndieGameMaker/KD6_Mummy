@@ -17,12 +17,19 @@ public class MummyAgent : Agent
     private Transform targetTr;
     private Rigidbody rb;
 
+    public Material goodMt, badMt;
+    private Material originMt;
+    private new Renderer renderer;
+
     // 초기화 작업을 하는 메소드
     public override void Initialize()
     {
         tr = GetComponent<Transform>();
         targetTr = tr.parent.Find("Target").GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
+
+        // Floor의 MeshRenderer 컴포넌트를 추출
+        renderer = tr.parent.Find("Floor").GetComponent<Renderer>();
     }
 
     // 에피소드(학습의 단위) 시작될때 마다 호출되는 메소드
