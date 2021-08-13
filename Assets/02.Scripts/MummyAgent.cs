@@ -1,3 +1,5 @@
+#pragma warning disable IDE0051
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -89,15 +91,24 @@ public class MummyAgent : Agent
     {
         if (coll.collider.CompareTag("DEAD_ZONE"))
         {
+            StartCoroutine(RevertMaterial(badMt));
             SetReward(-1.0f);
             EndEpisode();
         }
 
         if (coll.collider.CompareTag("TARGET"))
         {
+            StartCoroutine(RevertMaterial(goodMt));
             SetReward(+1.0f);
             EndEpisode();
         }
+    }
+
+    IEnumerator RevertMaterial(Material changedMt)
+    {
+        renderer.material = changedMt;
+        yield return new WaitForSeconds(0.2f);
+        renderer.material = originMt;
     }
 
 }
