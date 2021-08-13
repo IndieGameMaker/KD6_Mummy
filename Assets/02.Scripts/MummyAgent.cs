@@ -30,6 +30,7 @@ public class MummyAgent : Agent
 
         // Floor의 MeshRenderer 컴포넌트를 추출
         renderer = tr.parent.Find("Floor").GetComponent<Renderer>();
+        originMt = renderer.material;
     }
 
     // 에피소드(학습의 단위) 시작될때 마다 호출되는 메소드
