@@ -31,7 +31,7 @@ public class MummyAgent : Agent
         // 물리력을 초기화
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        // 에이젼의 위치를 불규칙하게 변경
+        // 에이젼트의 위치를 불규칙하게 변경
         tr.localPosition = new Vector3(Random.Range(-4.0f, 4.0f),
                                        0.05f,
                                        Random.Range(-4.0f, 4.0f));
@@ -76,4 +76,20 @@ public class MummyAgent : Agent
         //좌우 이동
         actions[1] = Input.GetAxis("Horizontal");
     }
+
+    void OnCollisionEnter(Collision coll)
+    {
+        if (coll.collider.CompareTag("DEAD_ZONE"))
+        {
+            SetReward(-1.0f);
+            EndEpisode();
+        }
+
+        if (coll.collider.CompareTag("TARGET"))
+        {
+            SetReward(+1.0f);
+            EndEpisode();
+        }
+    }
+
 }
