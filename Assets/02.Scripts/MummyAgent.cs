@@ -53,10 +53,23 @@ public class MummyAgent : Agent
     // 정책(Policy)에 따라서 행동을 처리 메소드
     public override void OnActionReceived(ActionBuffers actions)
     {
+        var action = actions.ContinuousActions;
+        Debug.Log($"[0]={action[0]}, [1]={action[1]}");
+        // Debug.Log("[0]="+ action[0] + ", [1]=" + action[1]);
+        // Debug.LogFormat("[0], [1]", action[0], action[1]);
     }
 
     // 테스트를 위한 입력값을 전달하는 메소드
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        /*
+            연속(Continues) Input.GetAxis("Horizontal")   -> -1.0f ~ 0.0f ~ +1.0f
+            이산(Discrete)  Input.GetAxisRaw("Horizontal")-> -1.0f, 0.0f, +1.0f
+        */
+        var actions = actionsOut.ContinuousActions;
+        //전진 후진 
+        actions[0] = Input.GetAxis("Vertical");
+        //좌우 이동
+        actions[1] = Input.GetAxis("Horizontal");
     }
 }
