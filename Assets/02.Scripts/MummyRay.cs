@@ -14,6 +14,10 @@ public class MummyRay : Agent
     public float moveSpeed = 1.5f;
     public float turnSpeed = 200.0f;
 
+    private Renderer floorRd;
+    public Material goodMt, badMt;
+    private Material originMt;
+
     public override void Initialize()
     {
         MaxStep = 5000;
@@ -21,6 +25,8 @@ public class MummyRay : Agent
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
         stageManager = tr.parent.GetComponent<StageManager>();
+        floorRd = tr.parent.Find("Floor").GetComponent<Renderer>();
+        originMt = floorRd.material;
     }
 
     public override void OnEpisodeBegin()
