@@ -29,6 +29,13 @@ public class MummyRay : Agent
         originMt = floorRd.material;
     }
 
+    IEnumerator RevertMaterial(Material changedMt)
+    {
+        floorRd.material = changedMt;
+        yield return new WaitForSeconds(0.2f);
+        floorRd.material = originMt;
+    }
+
     public override void OnEpisodeBegin()
     {
         // 스테이지를 초기화
@@ -108,12 +115,15 @@ public class MummyRay : Agent
             Destroy(coll.gameObject);
             AddReward(+1.0f);
             rb.velocity = rb.angularVelocity = Vector3.zero;
+
+            StartCoroutine(RevertMaterial(goodMt));
         }
 
         if (coll.collider.CompareTag("BAD_ITEM"))
         {
             AddReward(-1.0f);
             EndEpisode();
+            StartCoroutine(RevertMaterial(badMt));
         }
 
         if (coll.collider.CompareTag("WALL"))

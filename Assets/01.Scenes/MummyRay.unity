@@ -884,6 +884,8 @@ MonoBehaviour:
   MaxStep: 0
   moveSpeed: 1.5
   turnSpeed: 200
+  goodMt: {fileID: 2100000, guid: 07dfeeaeb07344c2a81e9f441d0e64db, type: 2}
+  badMt: {fileID: 2100000, guid: 665fc029b70084df7a9186e9e1e71cd8, type: 2}
 --- !u!114 &1659013687
 MonoBehaviour:
   m_ObjectHideFlags: 0
