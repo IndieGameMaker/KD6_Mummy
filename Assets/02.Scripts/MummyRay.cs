@@ -16,7 +16,7 @@ public class MummyRay : Agent
 
     public override void Initialize()
     {
-        MaxStep = 50;
+        MaxStep = 5000;
 
         tr = GetComponent<Transform>();
         rb = GetComponent<Rigidbody>();
@@ -27,6 +27,10 @@ public class MummyRay : Agent
     {
         // 스테이지를 초기화
         stageManager.InitStage();
+
+        // 물리엔진 초기화
+        rb.velocity = rb.angularVelocity = Vector3.zero;
+
         // 에이젼트의 위치 변경
         tr.localPosition = new Vector3(Random.Range(-20.0f, 20.0f),
                                        0.05f,
@@ -45,5 +49,17 @@ public class MummyRay : Agent
 
     public override void Heuristic(in ActionBuffers actionsOut)
     {
+        var actions = actionsOut.DiscreteActions;
+        actions.Clear();
+
+        // Branch 0 - 이동 (정지/전진/후진) 0, 1, 2 : Size 3
+        if (Input.GetKey(KeyCode.W))
+        {
+            actions[0] = 1;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            actions[0] = 2;
+        }
     }
 }
